@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jillian</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 300vh; /* 100vh per image */
+            overflow-x: hidden;
+            text-align: center;
+        }
+
+        .fixed-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 60px;
+            color: white;
+            z-index: 10;
+            transition: position 0.3s ease-in-out;
+        }
+
+        .image-section {
+            height: 100vh;
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #image1 {
+            background-image: url(thumb-IMG_4816.jpg);
+        }
+
+        #image2 {
+            background-image: url(HIP\ picture.png);
+        }
+
+        #image3 {
+            background-image: url(DSCF1733.JPG);
+        }
+    </style>
+</head>
+<body>
+    <div class="fixed-text">
+        pictures of stuff from RPG
+    </div>
+    <div class="image-section" id="image1"></div>
+    <div class="image-section" id="image2"></div>
+    <div class="image-section" id="image3"></div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+        window.addEventListener('scroll', function() {
+            var header = document.getElementById('header');
+            var image3 = document.getElementById('image3');
+            var contentSection = document.querySelector('.content-section');
+    
+            var image3Bottom = image3.getBoundingClientRect().bottom;
+            var contentTop = contentSection.getBoundingClientRect().top;
+    
+            if (image3Bottom <= 20) {
+                header.style.position = 'absolute';
+                header.style.top = (contentTop + window.scrollY) + 'px';
+            } else {
+                header.style.position = 'fixed';
+                header.style.top = '20px';
+            }
+        });
+    })
+    </script>
+</body>
+</html>
