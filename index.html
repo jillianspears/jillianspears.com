@@ -22,12 +22,16 @@
         body {
             font-family: 'Ariel';
             text-align: center;
+            color: white;
+        }
+        .first-section {
             top: 30%;
             margin: 0;
             padding: 0;
             color: white;
             background-image: url("DSCF4736.JPG");
             background-size: cover;
+            height: 100vh;
             background-position: fixed;
             position: relative;
         }
@@ -46,13 +50,35 @@
         .button:hover {
             background-color: #b3009b;
         }
+        .second-section {
+            height: 100vh;
+            background-color: white;
+            color: black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .icon {
+            font-size: 50px;
+        }
     </style>
 </head>
-<header>
-    JILLIAN SPEARS
-</header> 
 <body>
-    <p>This is my portfolio. Nothing is here yet, so come back later &#x270C;</p>
-    <a href="FixedHeader.html" class="button">RPG things</a><br><br>
+    <div class="first-section">
+        <header>
+            JILLIAN SPEARS
+        </header>
+        <p>This is my portfolio. Nothing is here yet, so come back later &#x270C;</p>
+        <a href="FixedHeader.html" class="button">RPG things</a>
+    </div>
+
+    <div class="second-section">
+        <div class="icons">
+            <div class="icon">🌟</div>
+            <div class="icon">🚀</div>
+            <div class="icon">✨</div>
+        </div>
+    </div>
 </body>
 </html>
