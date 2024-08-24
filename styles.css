@@ -63,3 +63,18 @@ header {
     align-items: center;
     justify-content: center;
 }
+@media (max-width: 768px) {
+    .first-section {
+        background-size: contain; /* Adjust image to fit within the section */
+        background-position: center center; /* Ensure proper alignment */
+        background-attachment: scroll; /* Allow image to scroll with content */
+        height: auto; /* Adjust height to content */
+        min-height: 100vh; /* Ensure section takes at least full viewport height */
+        background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent overlay for better text readability */
+    }
+
+    .second-section {
+        height: auto; /* Adjust height to content */
+        padding: 20px; /* Add some padding for small screens */
+    }
+}
