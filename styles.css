@@ -3,7 +3,6 @@
     src: url("YesevaOne-Regular.ttf") format('opentype'); 
 }
 
-/* Reset default margins and paddings */
 * {
     margin: 0;
     padding: 0;
@@ -48,7 +47,7 @@ header {
 .first-section {
     margin: 0;
     padding: 0;
-    background-image: url("FaceBackground.jpg");
+    background-image: url("pictures/FaceBackground.jpg");
     background-size: cover;
     height: 100vh;
     background-position: center;
