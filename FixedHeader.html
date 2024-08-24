@@ -3,75 +3,127 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jillian</title>
+    <title>RPG Things</title>
     <style>
         body, html {
             margin: 0;
             padding: 0;
-            height: 300vh; /* 100vh per image */
+            height: 300vh; /* This will create enough space to scroll */
             overflow-x: hidden;
-            text-align: center;
-        }
-
-        .fixed-text {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 60px;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background to enhance contrast */
             color: white;
-            z-index: 10;
-            transition: position 0.3s ease-in-out;
         }
 
-        .image-section {
-            height: 100vh;
-            width: 100%;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
+        .content-wrapper {
+            position: fixed;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
         }
 
-        #image1 {
-            background-image: url(thumb-IMG_4816.jpg);
+        .image {
+            width: 60%;
+            position: fixed;
+            /*margin: 10px auto;*/
+            transition: opacity 0.1s ease-in-out;
         }
 
-        #image2 {
-            background-image: url(HIP\ picture.png);
+        .side-text {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            font-size: 24px;
+            width: 30%;
+            text-align: left;
+            transition: opacity 0.3s ease-in-out;
         }
 
-        #image3 {
-            background-image: url(DSCF1733.JPG);
+        .hidden {
+            opacity: 0;
+        }
+
+        .visible {
+            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <div class="fixed-text">
-        pictures of stuff from RPG
+    <div class="content-wrapper">
+        <img src="thumb-IMG_4816.jpg" alt="Image 1" class="image visible" id="image1">
+        <img src="HIP picture.png" alt="Image 2" class="image hidden" id="image2">
+        <img src="DSCF1733.JPG" alt="Image 3" class="image hidden" id="image3">
+
+        <div class="side-text visible" id="text1">Text for Image 1</div>
+        <div class="side-text hidden" id="text2">Text for Image 2</div>
+        <div class="side-text hidden" id="text3">Text for Image 3</div>
     </div>
-    <div class="image-section" id="image1"></div>
-    <div class="image-section" id="image2"></div>
-    <div class="image-section" id="image3"></div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        window.addEventListener('scroll', function() {
-            var header = document.getElementById('header');
+        document.addEventListener('scroll', function() {
+            var scrollPosition = window.scrollY;
+            var windowHeight = window.innerHeight;
+            var documentHeight = document.documentElement.scrollHeight;
+            var scrollPercentage = scrollPosition / (documentHeight - windowHeight);
+
+            var image1 = document.getElementById('image1');
+            var image2 = document.getElementById('image2');
             var image3 = document.getElementById('image3');
-            var contentSection = document.querySelector('.content-section');
-    
-            var image3Bottom = image3.getBoundingClientRect().bottom;
-            var contentTop = contentSection.getBoundingClientRect().top;
-    
-            if (image3Bottom <= 20) {
-                header.style.position = 'absolute';
-                header.style.top = (contentTop + window.scrollY) + 'px';
+
+            var text1 = document.getElementById('text1');
+            var text2 = document.getElementById('text2');
+            var text3 = document.getElementById('text3');
+
+            // Change content based on scroll percentage
+            if (scrollPercentage < 0.33) {
+                image1.classList.add('visible');
+                image1.classList.remove('hidden');
+                text1.classList.add('visible');
+                text1.classList.remove('hidden');
+
+                image2.classList.add('hidden');
+                image2.classList.remove('visible');
+                text2.classList.add('hidden');
+                text2.classList.remove('visible');
+
+                image3.classList.add('hidden');
+                image3.classList.remove('visible');
+                text3.classList.add('hidden');
+                text3.classList.remove('visible');
+            } else if (scrollPercentage < 0.66) {
+                image2.classList.add('visible');
+                image2.classList.remove('hidden');
+                text2.classList.add('visible');
+                text2.classList.remove('hidden');
+
+                image1.classList.add('hidden');
+                image1.classList.remove('visible');
+                text1.classList.add('hidden');
+                text1.classList.remove('visible');
+
+                image3.classList.add('hidden');
+                image3.classList.remove('visible');
+                text3.classList.add('hidden');
+                text3.classList.remove('visible');
             } else {
-                header.style.position = 'fixed';
-                header.style.top = '20px';
+                image3.classList.add('visible');
+                image3.classList.remove('hidden');
+                text3.classList.add('visible');
+                text3.classList.remove('hidden');
+
+                image1.classList.add('hidden');
+                image1.classList.remove('visible');
+                text1.classList.add('hidden');
+                text1.classList.remove('visible');
+
+                image2.classList.add('hidden');
+                image2.classList.remove('visible');
+                text2.classList.add('hidden');
+                text2.classList.remove('visible');
             }
         });
-    })
     </script>
 </body>
 </html>
