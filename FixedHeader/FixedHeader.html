@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moments from my first year of RPG</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 400vh; /* This will create enough space to scroll */
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #000; /* Black background to enhance contrast */
+            color: white;
+        }
+
+        .content-wrapper {
+            position: fixed;
+            top: 25%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            width: 80%;
+        }
+
+        .image {
+            width: 60%;
+            position: fixed;
+            /*margin: 10px auto;*/
+            transition: opacity 0.1s ease-in-out;
+        }
+
+        .image.small {
+            width: 30%; /* Adjust the size of Image 4 */
+        }
+        .side-text {
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            font-size: 24px;
+            width: 30%;
+            text-align: left;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        .hidden {
+            opacity: 0;
+        }
+
+        .visible {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="content-wrapper">
+        <img src="thumb-IMG_4816.jpg" alt="Image 1" class="image visible" id="image1">
+        <img src="backseat.jpg" alt="Image 5" class="image small hidden" id="image5">
+        <img src="HIP picture.png" alt="Image 2" class="image hidden" id="image2">
+        <img src="DSCF1733.JPG" alt="Image 3" class="image hidden" id="image3">
+        <img src="milling.jpg" alt="Image 4" class="image small hidden" id="image4">
+        
+
+        <div class="side-text visible" id="text1">heres me wiring the charges for sep rec testing. <br> 
+            took pictures of everyone on this trip <br><br>
+            now i run the instagram bc of it 
+            </div>
+        <div class="side-text hidden" id="text2">HIP HIP Hooray. I hope my CoDR schematics never see the light again
+            <br> <br>cried the night before we fired these nozzles bc my circuit exploded when i tested a faulty ematch that backfired into my arduino. <br>
+            kinda foreshadowed the time we went to test SepRec and NONE of the ematches worked bc they were #faulty
+        </div>
+        <div class="side-text hidden" id="text3">my maiden poject at rpg. these broke so many times and eventually the entire harnessing system was redone.</div>
+        <div class="side-text hidden" id="text4">this is my orgin story of how i became an anti-machinist.</div>
+        <div class="side-text hidden" id="text5">literally how do i explain this</div>
+    </div>
+
+    <script src="RollPicsText.js"></script>
+</body>
+</html>
