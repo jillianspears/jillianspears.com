@@ -71,6 +71,7 @@ header {
         height: auto; /* Adjust height to content */
         min-height: 100vh; /* Ensure section takes at least full viewport height */
         background-color: rgba(0, 0, 0, 0.5); /* Optional: Add a semi-transparent overlay for better text readability */
+        font-size: 17px;
     }
 
     .second-section {
