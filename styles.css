@@ -26,11 +26,6 @@ header {
     color: #c394e6;
 }
 
-.second-section {
-    background-color: black;
-    color: white; /* Ensure text is visible on a dark background */
-}
-
 .button {
     display: inline-block;
     padding: 10px 20px;
@@ -62,8 +57,8 @@ header {
 }
 .second-section {
     height: 100vh;
-    background-color: white;
-    color: black;
+    background-color: black;
+    color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
