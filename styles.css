@@ -52,15 +52,118 @@ header {
     background-attachment: fixed;
     position: relative;
 }
+/* --- Second section: flip layout 90° so buttons sit on the bottom --- */
 .second-section {
-    height: 100vh;
-    background-color: black !important;
-    color: white;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+  /* override earlier flex-centering so grid can control layout */
+  display: block;
+  background-color: #000 !important;
+  color: #fff;
+  padding: clamp(16px, 3vw, 32px);
 }
+
+/* Main grid: hero | collage | copy | vertical title  and bottom nav */
+.about-grid{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr 1fr auto; /* hero | collage | text | title */
+  grid-template-rows: 1fr auto;               /* content | bottom nav */
+  gap: clamp(12px, 2.5vw, 24px);
+  grid-template-areas:
+    "hero collage copy title"
+    "nav  nav     nav  nav";
+  min-height: calc(100vh - clamp(16px, 3vw, 32px)*2);
+}
+
+/* Areas */
+.about-hero   { grid-area: hero; margin: 0; }
+.about-collage{ grid-area: collage; display: grid; gap: clamp(10px, 2vw, 16px); align-content: start; }
+.about-copy   { grid-area: copy; align-self: center; text-align: left; }
+.about-title  {
+  grid-area: title;
+  display: flex; align-items: center; justify-content: center;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-size: clamp(28px, 7vw, 80px);
+  letter-spacing: .08em;
+  color: #c394e6;        /* your palette */
+  opacity: .9;
+  user-select: none;
+}
+.about-bottom-nav{
+  grid-area: nav;
+  display: flex; gap: 10px; flex-wrap: wrap; justify-content: center;
+  border-top: 1px solid #242424;
+  padding-top: clamp(10px, 2vw, 16px);
+}
+
+/* Media */
+.hero-img{
+  width: 100%; height: 100%;
+  max-height: 72vh;
+  object-fit: cover;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,.45);
+}
+
+.collage-img{
+  width: 100%;
+  height: clamp(160px, 22vh, 260px);
+  object-fit: cover;
+  border-radius: 14px;
+  box-shadow: 0 10px 24px rgba(0,0,0,.35);
+}
+.collage-img.top    { transform: rotate(-2deg); }
+.collage-img.bottom { transform: rotate( 2deg); }
+
+/* Copy */
+.about-eyebrow{
+  font-size: clamp(14px, 2vw, 18px);
+  text-transform: lowercase;
+  letter-spacing: .06em;
+  color: #c394e6;
+  margin-bottom: 8px;
+}
+.about-copy p{
+  color: #e8e8e8;
+  line-height: 1.65;
+  margin-bottom: 12px;
+}
+
+/* Your existing .button already looks good; nudge spacing for the bar */
+.about-bottom-nav .button{
+  margin-top: 0;
+}
+
+/* --- Responsive --- */
+@media (max-width: 900px){
+  .about-grid{
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto auto auto;
+    grid-template-areas:
+      "title title"
+      "hero  hero"
+      "collage copy"
+      "nav    nav";
+    min-height: auto;
+  }
+  .hero-img{ max-height: 48vh; }
+}
+
+@media (max-width: 640px){
+  .about-grid{
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "hero"
+      "collage"
+      "copy"
+      "nav";
+  }
+  .about-title{
+    writing-mode: horizontal-tb;
+    justify-content: flex-start;
+    font-size: clamp(28px, 10vw, 42px);
+  }
 @media (max-width: 768px) {
     .first-section {
         background-size: contain; /* Adjust image to fit within the section */
@@ -77,5 +180,6 @@ header {
         padding: 20px; /* Add some padding for small screens */
     }
 }
+
 
 
